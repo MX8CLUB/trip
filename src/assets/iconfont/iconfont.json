@@ -1,0 +1,30 @@
+{
+  "id": "1615262",
+  "name": "trip",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "vue去哪网app",
+  "glyphs": [
+    {
+      "icon_id": "526001",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "4178745",
+      "name": "AK-LN箭头下",
+      "font_class": "ln_jiantouxia",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "10043452",
+      "name": "搜索",
+      "font_class": "xinbaniconshangchuan-",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    }
+  ]
+}
