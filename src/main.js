@@ -7,8 +7,12 @@ import fastClick from 'fastClick'
 import './assets/reset.css'
 import './assets/border.css'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+import Mock from '@/mock'
+import axiox from 'axios'
 
 Vue.use(VueAwesomeSwiper)
+Vue.use(Mock)
+Vue.prototype.$axios = axiox
 
 Vue.config.productionTip = false
 fastClick.attach(document.body)

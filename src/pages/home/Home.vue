@@ -1,11 +1,11 @@
 <!--  -->
 <template>
    <div class='wrapper'>
-    <Header />
-    <Swiper />
-    <Icons />
-    <Recommend />
-    <Weekend />
+    <Header  />
+    <Swiper :swiperImg = "swiperImg"/>
+    <Icons :iconList = "iconList"/>
+    <Recommend :recommendList = "recommendList" />
+    <Weekend :weekendList = "weekendList"/>
    </div>
 </template>
 
@@ -15,6 +15,7 @@ import Swiper from '@/pages/home/components/Swiper'
 import Icons from '@/pages/home/components/Icons'
 import Recommend from '@/pages/home/components/Recommend'
 import Weekend from '@/pages/home/components/Weekend'
+import * as requireConfig from '@/config/require'
 
 export default {
   components: {
@@ -26,11 +27,26 @@ export default {
   },
   data () {
     return {
+      swiperImg: [],
+      iconList: [],
+      recommendList: []
     }
   },
   methods: {},
   created () {},
-  mounted () {}
+  mounted () {
+    this.$axios.post('/api/getHomeData').then((res) => {
+      console.log(res)
+      if (res && res.data && res.data.code == requireConfig.REQUIRE_OK) {
+        console.log(res)
+        let list = res.data.list
+        this.swiperImg = list.swiperList
+        this.iconList = list.iconList
+        this.recommendList = list.recommendList
+        this.weekendList = list.weekendList
+      }
+    })
+  }
 }
 </script>
 
