@@ -13,11 +13,25 @@
       "unicode_decimal": 58904
     },
     {
+      "icon_id": "1810277",
+      "name": "火",
+      "font_class": "icon-test",
+      "unicode": "e6e7",
+      "unicode_decimal": 59111
+    },
+    {
       "icon_id": "4178745",
       "name": "AK-LN箭头下",
       "font_class": "ln_jiantouxia",
       "unicode": "e600",
       "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "6775641",
+      "name": "爱心 _实心",
+      "font_class": "aixin_shixin",
+      "unicode": "eca1",
+      "unicode_decimal": 60577
     },
     {
       "icon_id": "10043452",
