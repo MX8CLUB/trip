@@ -36,7 +36,6 @@ export default {
 
 <style lang = "less" scoped>
 .wrapper {
-  margin-top: 0.2rem;
   background-color: #eee;
   .title {
     width: 100%;
@@ -44,7 +43,6 @@ export default {
     line-height: 0.8rem;
     font-size: 0.32rem;
     color: black;
-    text-indent: 0.4rem;
     text-align: center;
     .iconfont{
       display: inline-block;
@@ -55,10 +53,10 @@ export default {
   }
   .list {
     display: flex;
-    width: 100%;
+    width: 97%;
+    margin:0 auto;
     flex-direction: column;
     align-items: center;
-    background-color: #fff;
     .item{
       display: flex;
       flex-direction: column;
@@ -68,6 +66,7 @@ export default {
       img{
         width: 100%;
         border-radius: .15rem;
+        over-flow:hidden;
       }
       .content{
         margin-top: .14rem;

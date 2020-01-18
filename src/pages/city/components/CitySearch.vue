@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
+
 export default {
   props: {
     cityList: Object | Array
@@ -35,13 +37,16 @@ export default {
   },
   methods: {
     handleSearchItem (val) {
-      this.searchKey = val.name
-      this.$emit('changeAlphabet', val.name)
+      // this.searchKey = val.name
+      // // this.$emit('changeAlphabet', val.name)
 
-      setTimeout(() => {
-        this.showSearch = false
-      }, 300)
-    }
+      // setTimeout(() => {
+      //   this.showSearch = false
+      // }, 300)
+      this.changeCity(val.name)
+      this.$router.push('/')
+    },
+    ...mapMutations(['changeCity'])
   },
   watch: {
     searchKey () {

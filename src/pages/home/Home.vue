@@ -1,7 +1,7 @@
 <!--  -->
 <template>
    <div class='wrapper'>
-    <Header :city="city" />
+    <Header />
     <Swiper :swiperImg = "swiperImg"/>
     <Icons :iconList = "iconList"/>
     <Recommend :recommendList = "recommendList" />
@@ -30,7 +30,8 @@ export default {
       city: '城市',
       swiperImg: [],
       iconList: [],
-      recommendList: []
+      recommendList: [],
+      weekendList: []
     }
   },
   methods: {},

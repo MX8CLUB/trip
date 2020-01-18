@@ -1,24 +1,24 @@
 <!--  -->
 <template>
    <div class='list' ref = "wrapper">
-     <div>
+     <div @click = "handleHostCity">
       <div class = "area">
         <p>当前城市</p>
         <div class="btnList">
-          <div class="btn">{{nowCity}}</div>
+          <div class="btn">{{this.city}}</div>
         </div>
       </div>
       <div class = "area">
         <p>热门城市</p>
         <div class="btnList">
-          <div v-for = "item in hostCityList" :key = "item.id" class="btn">{{item.name}}</div>
+          <div :data-city = "item.name"  v-for = "item in hostCityList" :key = "item.id" class="btn">{{item.name}}</div>
         </div>
       </div>
       <div class = "area" v-for = "(cityArr,index) in cityList" :key = "index" >
         <p :ref="index">{{index}}</p>
         <div class="city-list">
           <div v-for = "(item) in cityArr" :key = "item.id"
-               :ref="item.name"  class="city-item">{{item.name}}</div>
+               :data-city = "item.name" class="city-item">{{item.name}}</div>
         </div>
       </div>
      </div>
@@ -27,6 +27,7 @@
 
 <script>
 import BScroll from 'better-scroll'
+import {mapState, mapMutations} from 'vuex'
 
 export default {
   props: {
@@ -41,10 +42,20 @@ export default {
       // 获取指定的元素
       let ele = this.$refs[this.alphabetIndex][0]
       this.scroll.scrollToElement(ele)
-    }
+    },
+    // 点击某个城市时,切换当前城市,回到主页
+    handleHostCity (e) {
+      let data = e.target.dataset.city
+      this.changeCity(data)
+      this.$router.push('/')
+    },
+    ...mapMutations(['changeCity'])
+  },
+  computed: {
+    ...mapState(['city'])
   },
   mounted () {
-    this.scroll = new BScroll(this.$refs.wrapper)
+    this.scroll = new BScroll(this.$refs.wrapper, { click: true })
   },
   watch: {
     alphabetIndex () {
@@ -76,12 +87,13 @@ export default {
       padding: .15rem 0;
       padding-right: .4rem;
       .btn{
-        width: 1rem;
-        padding: .1rem .2rem;
-        margin: .1rem .15rem;
+        width: 1.2rem;
+        padding: 0.1rem 0.1rem;
+        margin: 0.1rem 0.15rem;
         border: 1px solid #ccc;
-        border-radius: .15rem;
+        border-radius: 0.1rem;
         text-align: center;
+        .textOverflow();
       }
     }
 

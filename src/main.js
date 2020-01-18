@@ -9,6 +9,7 @@ import './assets/border.css'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import Mock from '@/mock'
 import axiox from 'axios'
+import store from '@/store'
 
 Vue.use(VueAwesomeSwiper)
 Vue.use(Mock)
@@ -21,6 +22,7 @@ fastClick.attach(document.body)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

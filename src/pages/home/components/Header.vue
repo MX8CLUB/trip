@@ -4,23 +4,22 @@
     <div class = "head-left iconfont  iconfanhui back-icon" />
     <p class = "head-center" > <span class="iconfont iconxinbaniconshangchuan-"/> 输入城市/景点/游玩主题</p>
     <router-link to ="/city">
-      <p class = "head-right">  {{city}} <span class="iconfont iconln_jiantouxia arrow-icon"/></p>
+      <p class = "head-right">  {{this.city}} <span class="iconfont iconln_jiantouxia arrow-icon"/></p>
     </router-link>
   </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 export default {
-  components: {},
-  props: {
-    city: String
-  },
   data () {
     return {}
   },
   methods: {},
-  created () {},
-  mounted () {}
+  computed: {
+    ...mapState(['city'])
+  }
 }
 </script>
 
@@ -50,9 +49,10 @@ export default {
     color: #ccc;
   }
   .head-right{
-    width: 1.24rem;
+    width: 1.5rem;
     text-align: center;
     color:#fff;
+    .textOverflow();
     .arrow-icon{
       font-size: .24rem;
     }
