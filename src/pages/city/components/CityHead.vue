@@ -37,7 +37,7 @@ export default {
   .head-content{
     flex: 1;
     text-align: center;
-    text-indent: -.2rem;
+    text-indent: -.7rem;
     font-size: .33rem;
   }
 }

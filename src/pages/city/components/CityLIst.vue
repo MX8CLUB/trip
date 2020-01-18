@@ -5,101 +5,20 @@
       <div class = "area">
         <p>当前城市</p>
         <div class="btnList">
-          <div class="btn">北京</div>
+          <div class="btn">{{nowCity}}</div>
         </div>
       </div>
       <div class = "area">
         <p>热门城市</p>
         <div class="btnList">
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
+          <div v-for = "item in hostCityList" :key = "item.id" class="btn">{{item.name}}</div>
         </div>
       </div>
-      <div class = "area">
-        <p>当前城市</p>
-        <div class="btnList">
-          <div class="btn">北京</div>
-        </div>
-      </div>
-      <div class = "area">
-        <p>热门城市</p>
-        <div class="btnList">
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-        </div>
-      </div><div class = "area">
-        <p>当前城市</p>
-        <div class="btnList">
-          <div class="btn">北京</div>
-        </div>
-      </div>
-      <div class = "area">
-        <p>热门城市</p>
-        <div class="btnList">
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-        </div>
-      </div>
-      <div class = "area">
-        <p>当前城市</p>
-        <div class="btnList">
-          <div class="btn">北京</div>
-        </div>
-      </div>
-      <div class = "area">
-        <p>热门城市</p>
-        <div class="btnList">
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-        </div>
-      </div><div class = "area">
-        <p>当前城市</p>
-        <div class="btnList">
-          <div class="btn">北京</div>
-        </div>
-      </div>
-      <div class = "area">
-        <p>热门城市</p>
-        <div class="btnList">
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-        </div>
-      </div>
-      <div class = "area">
-        <p>当前城市</p>
-        <div class="btnList">
-          <div class="btn">北京</div>
-        </div>
-      </div>
-      <div class = "area">
-        <p>热门城市</p>
-        <div class="btnList">
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
-          <div class="btn">北京</div>
+      <div class = "area" v-for = "(cityArr,index) in cityList" :key = "index" >
+        <p :ref="index">{{index}}</p>
+        <div class="city-list">
+          <div v-for = "(item) in cityArr" :key = "item.id"
+               :ref="item.name"  class="city-item">{{item.name}}</div>
         </div>
       </div>
      </div>
@@ -110,15 +29,27 @@
 import BScroll from 'better-scroll'
 
 export default {
-  components: {},
-  data () {
-    return {
+  props: {
+    nowCity: String,
+    hostCityList: Array,
+    cityList: Object | Array,
+    alphabetIndex: String
+  },
+  methods: {
+    // 滚动到指定位置
+    scrollTo () {
+      // 获取指定的元素
+      let ele = this.$refs[this.alphabetIndex][0]
+      this.scroll.scrollToElement(ele)
     }
   },
-  methods: {},
-  created () {},
   mounted () {
     this.scroll = new BScroll(this.$refs.wrapper)
+  },
+  watch: {
+    alphabetIndex () {
+      this.scrollTo()
+    }
   }
 }
 </script>
@@ -149,7 +80,27 @@ export default {
         padding: .1rem .2rem;
         margin: .1rem .15rem;
         border: 1px solid #ccc;
+        border-radius: .15rem;
         text-align: center;
+      }
+    }
+
+    .city-list{
+      display: flex;
+      flex-direction: column;
+
+      .city-item{
+        text-indent: .1rem;
+        padding: .2rem;
+        &::after{
+          content: "";
+          display: block;
+          width: 95%;
+          height: 1px;
+          margin: .2rem auto;
+          margin-bottom: 0;
+          background-color: #ccc;
+        }
       }
     }
   }

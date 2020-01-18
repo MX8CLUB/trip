@@ -40,7 +40,7 @@ export default {
       console.log(res)
       if (res && res.data && res.data.code == requireConfig.REQUIRE_OK) {
         console.log(res)
-        let list = res.data.list
+        let list = res.data.data
         this.city = list.city
         this.swiperImg = list.swiperList
         this.iconList = list.iconList
