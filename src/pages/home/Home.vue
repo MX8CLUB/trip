@@ -1,7 +1,7 @@
 <!--  -->
 <template>
    <div class='wrapper'>
-    <Header  />
+    <Header :city="city" />
     <Swiper :swiperImg = "swiperImg"/>
     <Icons :iconList = "iconList"/>
     <Recommend :recommendList = "recommendList" />
@@ -27,6 +27,7 @@ export default {
   },
   data () {
     return {
+      city: '城市',
       swiperImg: [],
       iconList: [],
       recommendList: []
@@ -40,6 +41,7 @@ export default {
       if (res && res.data && res.data.code == requireConfig.REQUIRE_OK) {
         console.log(res)
         let list = res.data.list
+        this.city = list.city
         this.swiperImg = list.swiperList
         this.iconList = list.iconList
         this.recommendList = list.recommendList

@@ -3,13 +3,18 @@
   <div class="head">
     <div class = "head-left iconfont  iconfanhui back-icon" />
     <p class = "head-center" > <span class="iconfont iconxinbaniconshangchuan-"/> 输入城市/景点/游玩主题</p>
-    <p class = "head-right">  城市 <span class="iconfont iconln_jiantouxia arrow-icon"/></p>
+    <router-link to ="/city">
+      <p class = "head-right">  {{city}} <span class="iconfont iconln_jiantouxia arrow-icon"/></p>
+    </router-link>
   </div>
 </template>
 
 <script>
 export default {
   components: {},
+  props: {
+    city: String
+  },
   data () {
     return {}
   },
@@ -47,6 +52,7 @@ export default {
   .head-right{
     width: 1.24rem;
     text-align: center;
+    color:#fff;
     .arrow-icon{
       font-size: .24rem;
     }

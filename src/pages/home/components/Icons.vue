@@ -20,9 +20,6 @@ export default {
   data () {
     return {
       swiperOption: {
-        pagination: {
-          el: '.swiper-pagination'
-        }, // 这样写小圆点就有了
         loop: true
       }
     }
@@ -67,6 +64,7 @@ export default {
         margin: 0 auto;
       }
       p{
+        margin-top: .1rem;
         .textOverflow();
       }
     }
