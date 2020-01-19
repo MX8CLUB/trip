@@ -14,7 +14,9 @@ import {mapState} from 'vuex'
 
 export default {
   data () {
-    return {}
+    return {
+
+    }
   },
   methods: {},
   computed: {

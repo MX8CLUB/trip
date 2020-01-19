@@ -3,7 +3,9 @@
   <div class="wrapper">
     <div class="title"><span class = "iconfont iconaixin_shixin" /> 猜你喜欢</div>
     <ul class="list">
-      <li class="item" v-for=" (item,index) in recommendList" :key = "item.id">
+      <router-link  tag = "li"
+        :to="'/detail/' + item.id" class="item"
+        v-for=" (item,index) in recommendList" :key = "item.id">
         <div class="content">
           <img :src= "item.imgUrl" />
           <div class="text">
@@ -21,7 +23,7 @@
           </div>
         </div>
         <p class="recomment">{{item.desc}}</p>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
@@ -78,11 +80,12 @@ export default {
       min-height: 2.4rem;
       .content {
         display: flex;
-        width: 100%;
+        width: 95%;
         height: 100%;
-        margin: 0.2rem 0.1rem;
+        margin: 0.2rem auto;
         img {
           width: 2rem;
+          height: 100%;
           border-radius: .15rem;
         }
         .text {

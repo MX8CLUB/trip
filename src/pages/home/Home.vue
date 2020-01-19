@@ -16,6 +16,7 @@ import Icons from '@/pages/home/components/Icons'
 import Recommend from '@/pages/home/components/Recommend'
 import Weekend from '@/pages/home/components/Weekend'
 import * as requireConfig from '@/config/require'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -27,34 +28,45 @@ export default {
   },
   data () {
     return {
-      city: '城市',
+      lastCity: '', // 缓存city,用以判断是否需要重新获取首页数据
       swiperImg: [],
       iconList: [],
       recommendList: [],
       weekendList: []
     }
   },
-  methods: {},
-  created () {},
+  computed: {
+    ...mapState(['city'])
+  },
   mounted () {
-    this.$axios.post('/api/getHomeData').then((res) => {
-      console.log(res)
-      if (res && res.data && res.data.code == requireConfig.REQUIRE_OK) {
+    this.lastCity = this.city
+    this.getHomeData()
+  },
+  activated () {
+    console.log(this.city, this.lastCity)
+    if (this.city !== this.lastCity) {
+      this.getHomeData()
+      this.lastCity = this.city
+    }
+  },
+  methods: {
+    getHomeData () {
+      this.$axios.post('/api/getHomeData').then((res) => {
         console.log(res)
-        let list = res.data.data
-        this.city = list.city
-        this.swiperImg = list.swiperList
-        this.iconList = list.iconList
-        this.recommendList = list.recommendList
-        this.weekendList = list.weekendList
-      }
-    })
+        if (res && res.data && res.data.code == requireConfig.REQUIRE_OK) {
+          console.log(res)
+          let list = res.data.data
+          this.swiperImg = list.swiperList
+          this.iconList = list.iconList
+          this.recommendList = list.recommendList
+          this.weekendList = list.weekendList
+        }
+      })
+    }
   }
+
 }
 </script>
 
 <style lang = "less" scoped>
-  .wrapper{
-    /* background-color: #eee; */
-  }
 </style>
